@@ -18,3 +18,8 @@
     </tbody>
   </table>
 </section>
+@defer (when employees.length > 0) {
+<section id="employee-chart">
+  <app-employee-chart [employees]="employees" />
+</section>
+}

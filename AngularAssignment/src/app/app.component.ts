@@ -12,6 +12,12 @@ type Employee = {
   StarTimeUtc: string;
 };
 
+export type UniqueEmployee = {
+  name: string;
+  totalHours: number;
+  totalMinutes: number;
+};
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -20,7 +26,7 @@ type Employee = {
 export class AppComponent implements OnInit, OnDestroy {
   apiUrl = `https://rc-vault-fap-live-1.azurewebsites.net/api/gettimeentries?code=${environment.apiKey}`;
   employeesSubscription: Subscription = new Subscription();
-  employees: { name: string; totalHours: number; totalMinutes: number }[] = [];
+  employees: UniqueEmployee[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -36,11 +42,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   getUniqueEmployees(employees: Employee[]) {
-    const uniqueEmployee: {
-      name: string;
-      totalHours: number;
-      totalMinutes: number;
-    }[] = [];
+    const uniqueEmployee: UniqueEmployee[] = [];
 
     employees.forEach((item) => {
       const name = item.EmployeeName;
@@ -83,6 +85,7 @@ export class AppComponent implements OnInit, OnDestroy {
     uniqueEmployee.sort((a, b) => b.totalHours - a.totalHours);
 
     this.employees = uniqueEmployee;
+    console.log(this.employees);
   }
 
   calculateWorkingHours(
