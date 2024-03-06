@@ -1,0 +1,28 @@
+#table {
+  margin: 0 auto;
+  width: 60%;
+}
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+thead {
+  background-color: #e8e8e8;
+}
+
+td,
+th {
+  border: 1px solid #b2b2b2;
+  padding: 0.7rem 1.3rem;
+  text-align: center;
+}
+
+td:first-child,
+th:first-child {
+  text-align: start;
+}
+
+.lessHours {
+  background-color: rgb(255, 155, 155);
+}

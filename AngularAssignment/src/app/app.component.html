@@ -1,0 +1,20 @@
+<section id="table">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Total Time in Month</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (employee of employees; track $index) {
+      <tr [ngClass]="{ lessHours: employee.totalHours < 100 }">
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.totalHours }} hrs</td>
+        <td><a href="#">Edit</a></td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</section>
